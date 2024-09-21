@@ -1,0 +1,535 @@
+<?php
+
+if(isset($_GET['id']) && $_GET['id'] > 0){
+    $qry = $conn->query("SELECT a.*, s.code as student_code, concat(s.firstname, ' ', coalesce(concat(s.middlename,' '), ''), s.lastname) as `student`,concat(d.month_of,'-01') as pmonth,d.amount as amount,d.date_updated as date_updated FROM `account_list` a inner join student_list s on a.student_id = s.id  inner join `payment_list` d on d.account_id = a.id where d.account_id = a.id order by unix_timestamp(date(concat(month_of,'-01'))) asc");
+    if($qry->num_rows > 0){
+        foreach($qry->fetch_assoc() as $k => $v){
+            $$k=$v;
+        }
+		if(isset($student_id)){
+			$students = $conn->query("SELECT *,code as student_code, concat(firstname, ' ', coalesce(concat(middlename, ' '), ''), lastname) as `name` from `student_list` where id = '{$student_id}' ");
+			if($students->num_rows > 0){
+				foreach($students->fetch_array() as $k => $v){
+					if(!is_numeric($k) && !isset($$k)){
+						$$k = $v;
+					}
+				}
+			}}
+		}
+
+    $qry = $conn->query("SELECT a.*, r.name as `room`, d.name as `dorm` from `account_list` a inner join `room_list` r on a.room_id = r.id inner join dorm_list d on r.dorm_id = d.id  where a.id = '{$_GET['id']}' ");
+    if($qry->num_rows > 0){
+        foreach($qry->fetch_assoc() as $k => $v){
+            $$k=$v;
+        }
+		if(isset($student_id)){
+          
+			$students = $conn->query("SELECT a.*, s.code as student_code, concat(s.firstname, ' ', coalesce(concat(s.middlename,' '), ''), s.lastname) as `student`,concat(d.month_of,'-01') as pmonth,concat(d.الأولى) as الأولى,d.amount as amount,d.date_updated as date_updated FROM `account_list` a inner join student_list s on a.student_id = s.id  inner join `payment_list` d on d.account_id = a.id where d.account_id =  '{$id}' order by unix_timestamp(date(concat(month_of,'-01'))) asc");
+            if($students->num_rows > 0){
+				foreach($students->fetch_array() as $k => $v){
+					if(!is_numeric($k) && !isset($$k)){
+						$$k = $v;
+					}
+				}
+			}
+		}
+    }
+}
+?>
+
+
+<div class="card card-outline rounded-0 card-maroon"  style="min-height: 567.854px;background-image:url('../uploads/15.jpg'); 
+     
+     background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+   
+  
+   
+   
+   ">
+	
+
+
+				<h5 class="card-title font-weight-bolder">معلومات الطفل</h5>
+			
+			<div class="card-body">
+				<div class="container-fluid">
+					
+					
+					<fieldset class="border-bottom">
+						<legend>بيانات الطفل </legend>
+						<form action="" method="post">
+      
+								
+            <input  class="form-control" type="text" name="bcg"style="  text-align: center; width: 30%;margin:0 0 12px 1px;font-size:18px;color:red;font-weight: bold;" value=" رقم البطاقة :  ',<?php echo isset($student_code) ? $student_code : ''; ?>"> 
+             
+             
+                <input  class="form-control" type="text" name="bcg"style="  text-align: center;" value=" ' الاسم :  ',<?php echo isset($name) ? $name : ''; ?>,' ',<?php echo isset($address) ? $address : ''; ?>,'       تاريخ الميلاد  :  ',<?php echo isset($name) ? $name : ''; ?>,'           المحافظة : ',<?php echo isset($name) ? $name : ''; ?>,'         المديرية : ',<?php echo isset($name) ? $name : ''; ?>,'         العزلة : ',<?php echo isset($name) ? $name : ''; ?>;?>"> 
+             </div>
+            </div>
+			<div class="card-body">
+        <div class="container-fluid">
+		<table class="table table-hover table-striped table-bordered" id="payment-histpry-table" style="width: 100%  "; dir="rtl">
+	
+		
+		<colgroup>
+		<col width="1%">	
+					
+				</colgroup>
+				<thead>        
+
+                <tr>
+                    <th class="col-sm-2" > اللقاح</th>
+                    <th  class="col-sm-2"> الجرعة</th>
+                    <th  class="col-sm-2"> تاريخ الجرعات</th>
+                    <th  class="col-sm-2"> تاريخ العودة</th>
+                </tr>
+               
+       
+    <tr>
+
+        <th>السل</th>
+        <th class="col-sm-3"  >
+        </th>
+       
+       <td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+            
+    </tr>
+    
+    <tr>
+        
+        <th rowspan="4">
+            الشلل الفموي
+        </th>
+        <th class="col-sm-3" >
+            التمهيدية
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        
+        <th class="col-sm-3" > الاولى</th>
+        <td><?php echo isset($الأولى) ? $الأولى : ''; ?></td>
+	
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        
+        <th class="col-sm-3" > الثانية</th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        
+        <th class="col-sm-3" > الثالثة</th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        
+        <th>
+             الشلل الحقن
+        </th>
+        <th class="col-sm-3">
+           
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+
+    <tr> 
+        <th rowspan="3">
+             الخماسي
+        </th>
+        <th class="col-sm-3" >
+            الاولى
+        </th>
+        <td><?php echo isset($الأولى) ? $الأولى : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th class="col-sm-3" > الثانية</th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th class="col-sm-3" > الثالثة</th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+
+
+    <tr>
+        <th rowspan="3">
+             المكورات الرئوية
+        </th>
+        <th class="col-sm-3" >
+            الاولى
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th class="col-sm-3" > الثانية</th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th class="col-sm-3" > الثالثة</th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+
+    <tr>
+        <th rowspan="2">
+              الروتا
+        </th>
+        <th class="col-sm-3" >
+            الاولى
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th class="col-sm-3" > الثانية</th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+
+    <tr>
+        <th rowspan="2">
+              الحصبة والحصبة الالمانية
+        </th>
+        <th class="col-sm-3" >
+            الاولى
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th class="col-sm-3" > الثانية</th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th>
+              لقاح الشلل تنشيطية
+        </th>
+        <th class="col-sm-3" >
+            رابعة فموي
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th>
+                فيتامين (أ) 100 الف وحدة دولية
+        </th>
+        <th class="col-sm-3" >
+            
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th>
+              لقاح الشلل تنشيطية
+        </th>
+        <th class="col-sm-3" >
+            خامسة فموي
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    <tr>
+        <th>
+                فيتامين (أ) 200 الف وحدة دولية
+        </th>
+        <th class="col-sm-3" >
+            
+        </th>
+		<td><?php echo isset($name) ? $name : ''; ?></td>
+	   <td><?php echo isset($name) ? $name : ''; ?></td>
+    </tr>
+    
+    
+    
+ 
+        </table>
+    </form>
+    </div>
+    </div>
+
+
+							
+							
+                    <td align="center">
+								 <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+				                  		Action
+				                    <span class="sr-only">Toggle Dropdown</span>
+				                  </button>
+								 
+				                  <div class="dropdown-menu" role="menu">
+				                     <div class="dropdown-divider"></div>
+				                    <a class="dropdown-item edit_data" href="./?page=kimi/print&id=<?php echo isset($id) ? $id : ''; ?>"><span class="fa fa-print text-primary"></span> print</a>
+				                    </div>
+							</td>
+							
+						</tr>
+				
+
+				
+				</tbody>
+			</table>
+		</div>
+	</div>
+    <div class="card-footer py-1 text-center">
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=kimi"><i class="fa fa-angle-left"></i> Cancel</a>
+			</div>
+		</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group">
+
+
+
+
+
+
+
+
+
+									<label for="name" class="control-label">الاسم</label>
+									<div class="pl-3"><?php echo isset($name) ? $name : ''; ?></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="gender" class="control-label">الجنس</label>
+									<div class="pl-3"><?php echo isset($gender) ? $gender : ''; ?></div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="contact" class="control-label">تلفون #</label>
+									<div class="pl-3"><?php echo isset($contact) ? $contact : ''; ?></div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="email" class="control-label">Email</label>
+									<div class="pl-3"><?php echo isset($email) ? $email : ''; ?></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="address" class="control-label">التاريخ</label>
+									<div class="pl-3"><?php echo isset($address) ? $address : ''; ?></div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="">
+						<legend>معلومات الطفل</legend>
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="emergency_name" class="control-label">Name</label>
+									<div class="pl-3"><?php echo isset($emergency_name) ? $emergency_name : ''; ?></div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="emergency_contact" class="control-label">Contact #</label>
+									<div class="pl-3"><?php echo isset($emergency_contact) ? $emergency_contact : ''; ?></div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="emergency_relation" class="control-label">Relation</label>
+									<div class="pl-3"><?php echo isset($emergency_relation) ? $emergency_relation : ''; ?></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="emergency_address" class="control-label">Address</label>
+									<div class="pl-3"><?php echo isset($emergency_address) ? $emergency_address : ''; ?></div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+
+		<div class="card rounded-0 shadow">
+			<div class="card-header">
+				<h5 class="card-title font-weight-bolder">Dorm Information</h5>
+				<div class="card-tools">
+					<?php 
+						$status = isset($status) ? $status : '';
+						switch($status){
+							case 1:
+								echo '<span class="badge badge-light bg-gradient-light border text-center px-3 rounded-pill"><i class="fa fa-circle text-maroon mr-2"></i>Active</span>';
+								break;
+							case 0:
+								echo '<span class="badge badge-light bg-gradient-light border text-center px-3 rounded-pill"><i class="far fa-circle mr-2"></i>Inctive</span>';
+								break;
+							default:
+								echo '<span class="badge badge-light bg-gradient-light border text-center px-3 rounded-pill"><i class="far fa-circle mr-2"></i>N/A</span>';
+								break;
+						}
+					?>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="container-fluid">
+					<fieldset class="border-bottom">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="rate" class="control-label">Account Code</label>
+									<div class="pl-3"><?php echo isset($code) ? ($code) : ''; ?></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="dorm" class="control-label">Dorm</label>
+									<div class="pl-3"><?php echo isset($dorm) ? $dorm : ''; ?></div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="room" class="control-label">Room</label>
+									<div class="pl-3"><?php echo isset($room) ? $room : ''; ?></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group">
+									<label for="rate" class="control-label">Monthly Rate</label>
+									<div class="pl-3"><?php echo isset($rate) ? number_format($rate) : ''; ?></div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+			<div class="card-footer py-1 text-center">
+				<button class="btn btn-secondary btn-sm bg-gradient-secondary rounded-0" type="button" id="payment_history"><i class="fa fa-money-check-alt"></i> Payment History</button>
+				<button class="btn btn-info btn-sm bg-gradient-info rounded-0" type="button" id="add_payment"><i class="fa fa-credit-card"></i> Add Payment</button>
+				<a class="btn btn-primary btn-sm bg-gradient-maroon rounded-0" href="./?page=accounts/manage_account&id=<?= isset($id) ? $id : '' ?>"><i class="fa fa-edit"></i> Edit</a>
+				<button class="btn btn-danger btn-sm bg-gradient-danger rounded-0" type="button" id="delete-data"><i class="fa fa-trash"></i> Delete</button>
+				<a class="btn btn-light btn-sm bg-gradient-light border rounded-0" href="./?page=accounts"><i class="fa fa-angle-left"></i> Back to List</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+        $('#delete-data').click(function(){
+			_conf("Are you sure to delete this accounts permanently?","delete_accounts",['<?= isset($id) ? $id : '' ?>'])
+		})
+		$('#add_payment').click(function(){
+			uni_modal("<i class='fa fa-credit-card' dir='></i> قائمة تحصين الطفل", "accounts/manage_payment.php?account_id=<?= isset($id) ? $id : '' ?>")
+		})
+		$('#payment_history').click(function(){
+			uni_modal("<i class='fa fa-money-check-alt'></i> Payment History", "accounts/payment_history.php?account_id=<?= isset($id) ? $id : '' ?>", 'modal-lg')
+		})
+	})
+    function delete_accounts($id){
+		start_loader();
+		$.ajax({
+			url:_base_url_+"classes/Master.php?f=delete_account",
+			method:"POST",
+			data:{id: $id},
+			dataType:"json",
+			error:err=>{
+				console.log(err)
+				alert_toast("An error occured.",'error');
+				end_loader();
+			},
+			success:function(resp){
+				if(typeof resp== 'object' && resp.status == 'success'){
+					location.replace("./?page=accounts");
+				}else{
+					alert_toast("An error occured.",'error');
+					end_loader();
+				}
+			}
+		})
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

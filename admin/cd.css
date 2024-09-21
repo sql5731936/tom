@@ -1,0 +1,487 @@
+
+
+</head>
+<body>
+   <div class="slider">
+<ul> <li><img src="img/01.jpg">
+<h3>kimi-----------kimi</h3> </li>
+<li><img src="img/02.jpg">  <h3>kimi-----------kimi</h3> </li>
+<li><img src="img/03.jpg"> <h3>kimi-----------kimi</h3>  </li>
+<li><img src="img/04.jpg">  <h3>kimi-----------kimi</h3> </li>
+<li><img src="img/05.jpg">  <h3>kimi-----------kimi</h3>
+<li><img src="img/01.jpg">    <h3>kimi-----------kimi</h3> </li>
+ </ul>
+   </div>
+</body>
+</html>
+////////////////////////////////////////////////////
+div {body{
+    background-color: darkgoldenrod;}
+.slider{
+  width: 500px;
+    margin: auto;
+overflow: hidden;}
+.slider ul{
+padding: 0;
+width: 9500px;
+    list-style: none;/*اخفاء النقاط*/
+ text-decoration: none;/* اخفاء الخط   تحت الرابط*/
+
+position: relative;
+animation: slider 6s ease-in-out infinite;}
+.slider ul li{
+ float: left;
+    position: relative;}
+.slider h3{ margin: 0;
+    background: purple;
+padding: 15px;
+text-align: center;
+position:absolute;/*الظل فوق الخط */
+bottom: 0;/* اظهار الخط فوق الصور*/
+color: aliceblue;
+width: 100%;
+}
+@keyframes slider{  
+    0%{left: -100px;}
+    20%{left: -500px;}
+    40%{left: -1000px;}
+    60%{left: -1500px;}
+    80%{left: -2000px;}
+    100%{left: -2500px;}
+  
+}
+}
+
+ 
+
+
+body{
+    background-color: darkgoldenrod;
+}
+.slider{//div class slider ul li h3
+  width: 300px;
+    margin: auto;}
+.slider ul{
+padding: 0;
+width: 1500px;
+    list-style: none;/*اخفاء النقاط*/}
+.slider ul li{
+ float: left;
+    position: relative;
+}
+.slider h3{
+    background: purple;
+padding: 15px;
+text-align: center;
+position:absolute;/*الظل فوق الخط */
+bottom: 0;/* اظهار الخط فوق الصور*/
+}
+
+
+
+
+
+.hero-section {
+  background-image: url('..//..//uploads/12.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  padding: 50px;
+  padding-bottom: 0;
+  min-height: 665px;/*تحديدد الصوره*/
+  border-bottom: 15px solid var(--primary-color);
+}
+.hero-section::after {
+  content: "";
+  background: linear-gradient(90deg, #addb51 0%, #22C1C3 100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.65;
+توهج الصورة
+
+
+
+.login{
+  text-align: center;
+
+left: 50%;
+
+transform: translate(-50%-50%);
+
+background-color: blueviolet;
+
+padding: 1px;
+border-top-left-radius: 30px;
+border-top-right-radius: 20px;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 60px;
+
+}
+
+.login  input ,button,label{margin: 2px;
+  background-color: rgb(47, 127, 219);
+
+ 
+   border-top-left-radius: 30px;
+   border-top-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+   border-bottom-right-radius: 60px;
+
+}
+
+
+/*
+
+TemplateMo 585 Barber Shop
+
+https://templatemo.com/tm-585-barber-shop
+
+*/
+
+/*---------------------------------------
+  CUSTOM PROPERTIES ( VARIABLES )             
+-----------------------------------------*/
+:root {
+  --white-color:                  #ffffff;
+  --primary-color:                #dacebb;
+  --secondary-color:              #4c28c1;
+  --section-bg-color:             #f0f8ff;
+  --custom-btn-bg-color:          #c12828;
+  --custom-btn-bg-hover-color:    #4f88d1;
+  --dark-color:                   #000000;
+  --p-color:                      #717275;
+  --border-color:                 #7fffd4;
+  --link-hover-color:             #B22727;
+
+  --body-font-family:             'Unbounded', cursive;
+
+  --h1-font-size:                 74px;
+  --h2-font-size:                 46px;
+  --h3-font-size:                 32px;
+  --h4-font-size:                 28px;
+  --h5-font-size:                 24px;
+  --h6-font-size:                 22px;
+  --p-font-size:                  20px;
+  --btn-font-size:                16px;
+  --copyright-font-size:          14px;
+
+  --border-radius-large:          100px;
+  --border-radius-medium:         20px;
+  --border-radius-small:          10px;
+
+  --font-weight-thin:             200;
+  --font-weight-light:            300;
+  --font-weight-normal:           400;
+  --font-weight-bold:             700;
+}
+
+body {
+  background-color: var(--white-color);
+  font-family: var(--body-font-family); 
+}
+ul li {  list-style: none;/* اخفاء النقاط*/
+  color: var(--p-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-light);
+}
+a {
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.section-overlay + .container {
+  position: relative;
+}
+
+/*---------------------------------------
+  CUSTOM BLOCK BACKGROUND OVERLAY               
+-----------------------------------------*/
+
+.custom-block-bg-overlay-wrap {
+  background: var(--primary-color);
+  border-radius: var(--border-radius-medium);
+  transition: all 0.3s ease;
+}
+
+.custom-block-bg-overlay-wrap:hover {
+  background: linear-gradient(90deg, #FDBB2D 0%, #22C1C3 100%);
+  transform: scale(1.05);
+}
+
+.custom-block-bg-overlay-image {
+  border-radius: var(--border-radius-medium);
+  display: block;
+  margin: auto;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(8deg);
+}
+
+.custom-block-bg-overlay-wrap:hover .team-info {
+  bottom: 10px;
+}
+
+////////////////
+
+    
+
+.ggg{margin: 2px;
+  background-color: rgb(104, 171, 56);
+
+ 
+   border-top-left-radius: 30px;
+   border-top-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+   border-bottom-right-radius: 60px;
+
+}
+.price-list-thumb{  text-align: center;
+
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%-50%);
+  
+  background-color: rgb(126, 204, 243);
+  
+  padding: 10px;
+   border-top-left-radius: 30px;
+   border-top-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+   border-bottom-right-radius: 60px;
+  
+  }
+/*الشريط*/
+.sidebar {
+  background: var(--primary-color);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding: 50px 0 0;
+}
+
+.sidebar-sticky {
+  height: calc(100vh - 48px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+}
+
+
+.logo-image { 
+  width: 154px;
+  height: auto;
+  margin-bottom: 70px;
+  text-transform: uppercase;
+  position: relative;}
+
+#sidebarMenu .nav-link {
+
+  color: var(--dark-color);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-bold);
+}
+
+
+.hero-section {
+  background-image: url('../images/client-doing-hair-cut-barber-shop-salon.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  padding: 50px;
+  padding-bottom: 0;
+  min-height: 665px;/*تحديدد الصوره*/
+  border-bottom: 15px solid var(--primary-color);
+}
+
+.hero-section::after {
+  content: "";
+  background: linear-gradient(90deg, #addb51 0%, #22C1C3 100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.65;
+}
+
+.team-info {
+  background: var(--white-color);
+  border-radius: var(--border-radius-large);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left:50%;
+  margin: 10px 4px;
+  padding: 10px 17px 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.about-section .custom-block-bg-overlay-image {
+  width: 10%;
+  max-height: 150px;
+}
+
+
+/*---------------------------------------
+  HERO    الساعه  سلام     
+-----------------------------------------*/
+
+.featured-section {
+  background-image: url('../images/barber-customer-giving-high-five.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+}
+
+.featured-section strong {
+  background: var(--primary-color);
+  border-radius: var(--border-radius-medium);
+  display: inline-block;
+  margin-top: 100px;
+  padding: 10px 20px;
+}
+
+
+
+
+
+
+/*---------------------------------------
+  SERVICES             
+-----------------------------------------*/
+.services-thumb {
+  border-radius: var(--border-radius-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-thumb:hover .services-info {
+  border-color: var(--primary-color);
+  border-width: 5px;
+}
+
+.services-thumb:hover .services-image {
+  transform: scale(1.05);
+}
+
+.services-image {
+  border-radius: var(--border-radius-medium);
+  display: block;
+  margin: auto;
+  transition: all 0.3s;
+}
+
+.services-thumb-price {
+  background: var(--primary-color);
+  border-radius: var(--border-radius-medium);
+  font-size: var(--copyright-font-size);
+  margin-left: auto;
+  padding: 5px 10px;
+}
+
+.services-info {
+  border-radius: var(--border-radius-medium);
+  border: 1px solid var(--white-color);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 10%;
+  margin: 20px;
+  padding: 25px 30px;
+  transition: all 0.3s ease;
+}
+
+.services-info h4 {
+  color: var(--white-color);
+}
+
+
+
+ /*   width: 10%;
+overflow: hidden;  اخفاء النص الزائد*/
+
+
+ /*   width: 10%;
+overflow: hidden;  اخفاء النص الزائد*/
+
+
+
+
+
+/*---------------------------------------
+  FEATURED               
+-----------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---------------------------------------
+  PRICE LIST             
+-----------------------------------------*/
+
+
+

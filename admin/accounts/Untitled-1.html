@@ -1,0 +1,141 @@
+الرابط
+https://www.phpmyadmin.co/index.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALTER TABLE `dorm_list` CHANGE `status` `status` TINYINT(1) NOT NULL DEFAULT '1', CHANGE `delete_flag` `delete_flag` TINYINT(1) NOT NULL DEFAULT '0', CHANGE `date_created` `date_created` DATETIME NOT NULL, CHANGE `date_updated` `date_updated` DATETIME NOT NULL;
+
+
+
+
+
+
+ALTER TABLE `dorm_list` CHANGE `status` `status` TINYINT(1) NOT NULL DEFAULT '1', CHANGE `delete_flag` `delete_flag` TINYINT(1) NOT NULL DEFAULT '0', CHANGE `date_created` `date_created` DATETIME NOT NULL, CHANGE `date_updated` `date_updated` DATETIME NOT NULL;
+
+
+
+
+
+
+
+
+ALTER TABLE `student_list`
+ ADD `status` INT NOT NULL AFTER `emergency_contact`,
+ ADD `delete_flag` INT NOT NULL AFTER `status`,
+ ADD `date_created` INT NOT NULL AFTER `delete_flag`,
+ ADD `date_updated` TEXT NOT NULL AFTER`date_created`;
+
+
+
+
+
+
+
+
+
+
+FOREIGN KEY (Super_ssn) REFERENCES EMPLOYEE(Ssn),
+FOREIGN KEY (Dno) REFERENCES DEPARTMENT(Dnumber)
+
+
+
+
+
+,
+FOREIGN KEY (Mgr_ssn) REFERENCES EMPLOYEE(Ssn)
+
+
+
+,
+FOREIGN KEY (Dnumber) REFERENCES DEPARTMENT(Dnumber)
+
+
+
+
+,
+FOREIGN KEY (Dnum) REFERENCES DEPARTMENT(Dnumber)
+
+
+
+
+<p dir="r">
+
+
+,
+FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn),
+FOREIGN KEY (Pno) REFERENCES PROJECT(Pnumber)
+
+
+
+FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM `payment_list` WHERE 1
+
+
+	SELECT r.*, d.name as `dorm` FROM `room_list` r inner join `dorm_list` d on r.dorm_id = d.id where r.delete_flag = 0 and r.`status` = 1 and ( r.slots - COALESCE((SELECT COUNT(id) FROM `account_list` where room_id = r.id), 0)) > 0 order by `name` asc
+
+
+
+SELECT * FROM `account_list` WHERE id>0 in(SELECT code FROM student_list WHERE code>0);
+
+
+
+ALTER TABLE `brands`
+ ADD `status` INT NOT NULL AFTER `brand_title`,
+ ADD `delete_flag` INT NOT NULL AFTER `status`,
+ ADD `date_created` INT NOT NULL AFTER `delete_flag`,
+ ADD `date_updated` TEXT NOT NULL AFTER`date_created`;
+
+
+
+
+delete_flag
+date_created
+date_updated
+
+
+
+ ALTER TABLE ` products` ADD `delete_flag` TINYINT(1) NOT NULL AFTER `product_keywords`, ADD `date_created`
+  TINYINT(0) NOT NULL AFTER `delete_flag`, ADD `date_updated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `date_created`;
+
+
+
+
+
+  ALTER TABLE `user_info` ADD `delete_flag` TINYINT NOT NULL DEFAULT '0' AFTER `address2`, ADD `date_created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `delete_flag`, ADD `date_updated` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `date_created`;

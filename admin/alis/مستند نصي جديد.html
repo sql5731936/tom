@@ -1,0 +1,65 @@
+
+
+function save_ali(){
+    extract($_POST);
+    $data = "";
+    foreach($_POST as $k =>$v){
+        if(!in_array($k,array('id'))){
+            if(!empty($data)) $data .=",";
+            $v = $this->conn->real_escape_string($v);
+            $data .= " `{$k}`='{$v}' ";
+        }
+    }
+    $check = $this->conn->query("SELECT * FROM `ali_list` where `name` = '{$name}' and delete_flag = 0 ".($id > 0 ? " and id != '{$id}' " : '')." ")->num_rows;
+    if($check > 0){
+        $resp['status'] = 'failed';
+        $resp['msg'] = 'ali Name already exists.';
+        return json_encode($resp);
+    }
+    if(empty($id)){
+        $sql = "INSERT INTO `ali_list` set {$data} ";
+    }else{
+        $sql = "UPDATE `ali_list` set {$data} where id = '{$id}' ";
+    }
+        $save = $this->conn->query($sql);
+    if($save){
+        $aid = !empty($id) ? $id : $this->conn->insert_id;
+        $resp['status'] = 'success';
+        $resp['aid'] = $aid;
+
+        if(empty($id))
+            $resp['msg'] = "New ali successfully saved.";
+        else
+            $resp['msg'] = " ali successfully updated.";
+        
+    }else{
+        $resp['status'] = 'failed';
+        $resp['err'] = $this->conn->error."[{$sql}]";
+    }
+    if($resp['status'] == 'success')
+        $this->settings->set_flashdata('success',$resp['msg']);
+        return json_encode($resp);
+}
+function delete_ali(){
+    extract($_POST);
+    $del = $this->conn->query("UPDATE `ali_list` set delete_flag = 1 where id = '{$id}'");
+    if($del){
+        $resp['status'] = 'success';
+        $this->settings->set_flashdata('success'," ali successfully deleted.");
+    }else{
+        $resp['status'] = 'failed';
+        $resp['error'] = $this->conn->error;
+    }
+    return json_encode($resp);
+
+}
+
+
+
+
+case 'save_ali':
+		echo $Master->save_ali();
+	break;
+	case 'delete_ali':
+		echo $Master->delete_ali();
+	break;
